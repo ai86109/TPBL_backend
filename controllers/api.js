@@ -4,6 +4,10 @@ const Standings = db.Standings
 const apisController = {
   getStandings: (req, res) => {
     Standings.findAll({
+      where: {
+        year: req.params.year,
+        season: req.params.season
+      },
       order: [['teamRank', 'ASC']]
     }).then((result) => {
       res.json(result)
