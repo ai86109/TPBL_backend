@@ -77,6 +77,12 @@ module.exports = {
       ra: {
         type: Sequelize.INTEGER
       },
+      oneRun: {
+        type: Sequelize.CHAR
+      },
+      xtra: {
+        type: Sequelize.CHAR
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
