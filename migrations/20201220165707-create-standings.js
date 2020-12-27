@@ -39,7 +39,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       pct: {
-        type: Sequelize.INTEGER
+        type: Sequelize.CHAR
       },
       gb: {
         type: Sequelize.CHAR
