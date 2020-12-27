@@ -43,6 +43,8 @@ module.exports = (sequelize, DataTypes) => {
     away: DataTypes.CHAR,
     strk: DataTypes.CHAR,
     l10: DataTypes.CHAR,
+    oneRun: DataTypes.CHAR,
+    xtra: DataTypes.CHAR,
     rs: DataTypes.INTEGER,
     ra: DataTypes.INTEGER
   }, {
