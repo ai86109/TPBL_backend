@@ -13,5 +13,6 @@ app.use(cors())
 const apisController = require('./controllers/api')
 
 app.get('/standingsApi/:year/:season', apisController.getStandings)
+app.get('/batterStatsApi/:year/:statsType/:sort', apisController.getBatterStats)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

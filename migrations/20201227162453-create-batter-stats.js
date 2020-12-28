@@ -76,13 +76,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       obp: {
-        type: Sequelize.CHAR
+        type: Sequelize.DECIMAL(4,3)
       },
       slg: {
-        type: Sequelize.CHAR
+        type: Sequelize.DECIMAL(4,3)
       },
       avg: {
-        type: Sequelize.CHAR
+        type: Sequelize.DECIMAL(4,3)
       },
       gidp: {
         type: Sequelize.INTEGER
@@ -112,13 +112,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       goao: {
-        type: Sequelize.CHAR
+        type: Sequelize.DECIMAL(4,3)
       },
       ta: {
-        type: Sequelize.CHAR
+        type: Sequelize.DECIMAL(4,3)
       },
       ssa: {
-        type: Sequelize.CHAR
+        type: Sequelize.DECIMAL(5,2)
       },
       createdAt: {
         allowNull: false,
