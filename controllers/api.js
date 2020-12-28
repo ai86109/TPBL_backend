@@ -22,7 +22,6 @@ const apisController = {
       BatterStats.findAll({
         where: {
           year: req.params.year,
-          statType
         },
         order: [[statType, 'DESC']]
       }).then((result) => {
@@ -32,7 +31,6 @@ const apisController = {
       BatterStats.findAll({
         where: {
           year: req.params.year,
-          statType
         },
         order: [[statType, 'ASC']]
       }).then((result) => {
