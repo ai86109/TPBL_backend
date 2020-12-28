@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     win: DataTypes.INTEGER,
     lose: DataTypes.INTEGER,
     tied: DataTypes.INTEGER,
-    pct: DataTypes.INTEGER,
+    pct: DataTypes.DECIMAL(4,3),
     gb: DataTypes.CHAR,
     eIndex: DataTypes.CHAR,
     vsBrothers: DataTypes.CHAR,
