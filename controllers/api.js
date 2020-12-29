@@ -45,8 +45,6 @@ const apisController = {
   getPitcherStats: (req, res) => {
     let statType = req.params.statsType
 
-    
-
     if(req.params.sort === 'desc') {
       PitcherStats.findAll({
         where: {
