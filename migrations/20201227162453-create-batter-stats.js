@@ -120,6 +120,30 @@ module.exports = {
       ssa: {
         type: Sequelize.DECIMAL(5,2)
       },
+      ops: {
+        type: Sequelize.DECIMAL(4,3)
+      },
+      xbh: {
+        type: Sequelize.INTEGER
+      },
+      babip: {
+        type: Sequelize.DECIMAL(4,3)
+      },
+      iso: {
+        type: Sequelize.DECIMAL(4,3)
+      },
+      abhr: {
+        type: Sequelize.DECIMAL(5,2)
+      },
+      bbso: {
+        type: Sequelize.DECIMAL(4,3)
+      },
+      bbpa: {
+        type: Sequelize.DECIMAL(4,3)
+      },
+      sopa: {
+        type: Sequelize.DECIMAL(4,3)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
