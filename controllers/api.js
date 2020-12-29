@@ -1,6 +1,7 @@
 const db = require('../models')
 const Standings = db.Standings
 const BatterStats = db.BatterStats
+const PitcherStats = db.PitcherStats
 
 const apisController = {
   getStandings: (req, res) => {
@@ -31,6 +32,32 @@ const apisController = {
       }).catch(err => console.log(err))
     } else {
       BatterStats.findAll({
+        where: {
+          year: req.params.year,
+        },
+        order: [[statType, 'ASC']]
+      }).then((result) => {
+        res.json(result)
+      }).catch(err => console.log(err))
+    }
+  },
+
+  getPitcherStats: (req, res) => {
+    let statType = req.params.statsType
+
+    
+
+    if(req.params.sort === 'desc') {
+      PitcherStats.findAll({
+        where: {
+          year: req.params.year,
+        },
+        order: [[statType, 'DESC']]
+      }).then((result) => {
+        res.json(result)
+      }).catch(err => console.log(err))
+    } else {
+      PitcherStats.findAll({
         where: {
           year: req.params.year,
         },
