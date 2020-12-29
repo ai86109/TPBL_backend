@@ -18,6 +18,8 @@ const apisController = {
   getBatterStats: (req, res) => {
     let statType = req.params.statsType
 
+    
+
     if(req.params.sort === 'desc') {
       BatterStats.findAll({
         where: {

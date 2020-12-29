@@ -61,7 +61,15 @@ module.exports = (sequelize, DataTypes) => {
     ao: DataTypes.INTEGER,
     goao: DataTypes.DECIMAL(4,3),
     ta: DataTypes.DECIMAL(4,3),
-    ssa: DataTypes.DECIMAL(5,2)
+    ssa: DataTypes.DECIMAL(5,2),
+    ops: DataTypes.DECIMAL(4,3),
+    xbh: DataTypes.INTEGER,
+    babip: DataTypes.DECIMAL(4,3),
+    iso: DataTypes.DECIMAL(4,3),
+    abhr: DataTypes.DECIMAL(5,2),
+    bbso: DataTypes.DECIMAL(4,3),
+    bbpa: DataTypes.DECIMAL(4,3),
+    sopa: DataTypes.DECIMAL(4,3)
   }, {
     sequelize,
     modelName: 'BatterStats',
