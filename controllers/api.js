@@ -3,6 +3,7 @@ const Standings = db.Standings
 const BatterStats = db.BatterStats
 const PitcherStats = db.PitcherStats
 const TeamBatterStats = db.TeamBatterStats
+const TeamPitcherStats = db.TeamPitcherStats
 
 const apisController = {
   getStandings: (req, res) => {
@@ -81,6 +82,30 @@ const apisController = {
       }).catch(err => console.log(err))
     } else {
       TeamBatterStats.findAll({
+        where: {
+          year: req.params.year,
+        },
+        order: [[statType, 'ASC']]
+      }).then((result) => {
+        res.json(result)
+      }).catch(err => console.log(err))
+    }
+  },
+
+  getTeamPitcherStats: (req, res) => {
+    let statType = req.params.statsType
+
+    if(req.params.sort === 'desc') {
+      TeamPitcherStats.findAll({
+        where: {
+          year: req.params.year,
+        },
+        order: [[statType, 'DESC']]
+      }).then((result) => {
+        res.json(result)
+      }).catch(err => console.log(err))
+    } else {
+      TeamPitcherStats.findAll({
         where: {
           year: req.params.year,
         },
