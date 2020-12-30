@@ -30,6 +30,9 @@ module.exports = {
       enPlayerName: {
         type: Sequelize.CHAR
       },
+      image: {
+        type: Sequelize.CHAR
+      },
       position: {
         type: Sequelize.CHAR
       },

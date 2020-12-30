@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: 'pitcher'
     },
     enPlayerName: DataTypes.CHAR,
+    image: DataTypes.CHAR,
     position: DataTypes.CHAR,
     games: DataTypes.INTEGER,
     gs: DataTypes.INTEGER,
