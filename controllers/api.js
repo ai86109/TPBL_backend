@@ -85,6 +85,7 @@ const apisController = {
       TeamBatterStats.findAll({
         where: {
           year: req.params.year,
+          season: 'full',
         },
         order: [[statType, 'ASC']]
       }).then((result) => {
@@ -110,6 +111,7 @@ const apisController = {
       TeamPitcherStats.findAll({
         where: {
           year: req.params.year,
+          season: 'full',
         },
         order: [[statType, 'ASC']]
       }).then((result) => {
