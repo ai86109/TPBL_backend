@@ -1,4 +1,5 @@
 const db = require('../models')
+const { Op } = require("sequelize");
 const Standings = db.Standings
 const BatterStats = db.BatterStats
 const PitcherStats = db.PitcherStats
@@ -20,51 +21,107 @@ const apisController = {
 
   getBatterStats: (req, res) => {
     let statType = req.params.statsType
+    const paRules = ['avg', 'obp', 'slg', 'ops', 'goao', 'babip', 'iso', 'abhr', 'bbso', 'bbpa', 'sopa']
 
-    
-
-    if(req.params.sort === 'desc') {
-      BatterStats.findAll({
-        where: {
-          year: req.params.year,
-        },
-        order: [[statType, 'DESC']]
-      }).then((result) => {
-        res.json(result)
-      }).catch(err => console.log(err))
+    if(paRules.includes(statType)) {
+      if(req.params.sort === 'desc') {
+        BatterStats.findAll({
+          where: {
+            year: req.params.year,
+            pa: {
+              [Op.gte]: 372,
+            },
+          },
+          order: [[statType, 'DESC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      } else {
+        BatterStats.findAll({
+          where: {
+            year: req.params.year,
+            pa: {
+              [Op.gte]: 372,
+            },
+          },
+          order: [[statType, 'ASC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      }
     } else {
-      BatterStats.findAll({
-        where: {
-          year: req.params.year,
-        },
-        order: [[statType, 'ASC']]
-      }).then((result) => {
-        res.json(result)
-      }).catch(err => console.log(err))
+      if(req.params.sort === 'desc') {
+        BatterStats.findAll({
+          where: {
+            year: req.params.year,
+          },
+          order: [[statType, 'DESC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      } else {
+        BatterStats.findAll({
+          where: {
+            year: req.params.year,
+          },
+          order: [[statType, 'ASC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      }
     }
   },
 
   getPitcherStats: (req, res) => {
     let statType = req.params.statsType
+    const gamesRules = ['era', 'whip', 'so9', 'bb9', 'sobb']
 
-    if(req.params.sort === 'desc') {
-      PitcherStats.findAll({
-        where: {
-          year: req.params.year,
-        },
-        order: [[statType, 'DESC']]
-      }).then((result) => {
-        res.json(result)
-      }).catch(err => console.log(err))
+    if(gamesRules.includes(statType)) {
+      if(req.params.sort === 'desc') {
+        PitcherStats.findAll({
+          where: {
+            year: req.params.year,
+            ip: {
+              [Op.gte]: 120,
+            },
+          },
+          order: [[statType, 'DESC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      } else {
+        PitcherStats.findAll({
+          where: {
+            year: req.params.year,
+            ip: {
+              [Op.gte]: 120,
+            },
+          },
+          order: [[statType, 'ASC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      }
     } else {
-      PitcherStats.findAll({
-        where: {
-          year: req.params.year,
-        },
-        order: [[statType, 'ASC']]
-      }).then((result) => {
-        res.json(result)
-      }).catch(err => console.log(err))
+      if(req.params.sort === 'desc') {
+        PitcherStats.findAll({
+          where: {
+            year: req.params.year,
+          },
+          order: [[statType, 'DESC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      } else {
+        PitcherStats.findAll({
+          where: {
+            year: req.params.year,
+          },
+          order: [[statType, 'ASC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      }
     }
   },
 
