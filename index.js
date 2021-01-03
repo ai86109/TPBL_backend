@@ -12,6 +12,7 @@ app.use(cors())
 
 const apisController = require('./controllers/api')
 
+app.get('/topStatsApi/:year/:dataType/:statsType', apisController.getTopStats)
 app.get('/standingsApi/:year/:season', apisController.getStandings)
 app.get('/batterStatsApi/:year/:statsType/:sort', apisController.getBatterStats)
 app.get('/pitcherStatsApi/:year/:statsType/:sort', apisController.getPitcherStats)

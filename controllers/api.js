@@ -20,7 +20,7 @@ const apisController = {
   },
 
   getBatterStats: (req, res) => {
-    let statType = req.params.statsType
+    const statType = req.params.statsType
     const paRules = ['avg', 'obp', 'slg', 'ops', 'goao', 'babip', 'iso', 'abhr', 'bbso', 'bbpa', 'sopa']
 
     if(paRules.includes(statType)) {
@@ -73,7 +73,7 @@ const apisController = {
   },
 
   getPitcherStats: (req, res) => {
-    let statType = req.params.statsType
+    const statType = req.params.statsType
     const gamesRules = ['era', 'whip', 'so9', 'bb9', 'sobb']
 
     if(gamesRules.includes(statType)) {
@@ -126,7 +126,7 @@ const apisController = {
   },
 
   getTeamBatterStats: (req, res) => {
-    let statType = req.params.statsType
+    const statType = req.params.statsType
 
     if(req.params.sort === 'desc') {
       TeamBatterStats.findAll({
@@ -152,7 +152,7 @@ const apisController = {
   },
 
   getTeamPitcherStats: (req, res) => {
-    let statType = req.params.statsType
+    const statType = req.params.statsType
 
     if(req.params.sort === 'desc') {
       TeamPitcherStats.findAll({
@@ -174,6 +174,61 @@ const apisController = {
       }).then((result) => {
         res.json(result)
       }).catch(err => console.log(err))
+    }
+  },
+
+  getTopStats: (req, res) => {
+    const hittingTypes = ['avg', 'h', 'hr', 'rbi', 'sb']
+    const pitchingTypes = ['win', 'sv', 'hld', 'era', 'so']
+    const dataType = req.params.dataType
+    const statsType = req.params.statsType
+
+    if(dataType === 'hitting') {
+      if(statsType === 'avg') {
+        BatterStats.findOne({
+          where: {
+            year: req.params.year,
+            pa: {
+              [Op.gte]: 372,
+            },
+          },
+          order: [[statsType, 'DESC']] 
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      } else {
+        BatterStats.findOne({
+          where: {
+            year: req.params.year,
+          },
+          order: [[statsType, 'DESC']] 
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      }
+    } else if(dataType === 'pitching') {
+      if(statsType === 'era') {
+        PitcherStats.findOne({
+          where: {
+            year: req.params.year,
+            ip: {
+              [Op.gte]: 120,
+            },
+          },
+          order: [[statsType, 'ASC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      } else {
+        PitcherStats.findOne({
+          where: {
+            year: req.params.year,
+          },
+          order: [[statsType, 'DESC']]
+        }).then((result) => {
+          res.json(result)
+        }).catch(err => console.log(err))
+      }
     }
   }
 }
