@@ -1,7 +1,7 @@
 const db = require('../models')
 const bcrypt = require('bcryptjs')
 const { Users } = db
-const { errorMessage1, errorMessage2, successMessage } = require('../serverMessage')
+const { errorMessage1, errorMessage2 } = require('../serverMessage')
 const { generateAuthToken, getAuthToken } = require('../utils')
 
 const usersController = {

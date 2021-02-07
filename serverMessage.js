@@ -1,12 +1,12 @@
 module.exports = {
   //Please fill in all the required fields.
-  errorMessage1 = {
+  errorMessage1: {
     ok: 0,
     message: 1
   },
 
   //The username or password is incorrect.
-  errorMessage2 = {
+  errorMessage2: {
     ok: 0,
     message: 2
   }
