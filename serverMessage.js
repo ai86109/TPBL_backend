@@ -9,9 +9,5 @@ module.exports = {
   errorMessage2 = {
     ok: 0,
     message: 2
-  },
-
-  successMessage = {
-    ok: 1
   }
 }

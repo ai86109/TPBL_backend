@@ -17,7 +17,10 @@ const usersController = {
       if(!me) {
         return res.json(errorMessage1)
       }
-      return res.json(successMessage)
+      return res.json({
+        ok: 1,
+        data: decoded.username
+      })
     }).catch(err => {
       return res.json({
         ok: 0,
