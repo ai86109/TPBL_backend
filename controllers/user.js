@@ -6,7 +6,8 @@ const { generateAuthToken, getAuthToken } = require('../utils')
 
 const usersController = {
   me: (req, res) => {
-    const decoded = getAuthToken(req)
+    const token = req.header('Authorization').replace('Bearer ', '')
+    const decoded = getAuthToken(token)
 
     Users.findOne({
       where: {

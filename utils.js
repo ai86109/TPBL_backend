@@ -9,8 +9,7 @@ const utils = {
     )
   },
 
-  getAuthToken: (req) => {
-    const token = req.header('Authorization').replace('Bearer ', '')
+  getAuthToken: (token) => {
     return jwt.verify(token, SECRET)
   }
 }
