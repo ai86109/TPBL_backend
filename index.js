@@ -11,6 +11,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 const apisController = require('./controllers/api')
+const usersController = require('./controllers/user')
 
 app.get('/topStatsApi/:year/:dataType/:statsType', apisController.getTopStats)
 app.get('/standingsApi/:year/:season', apisController.getStandings)
@@ -18,5 +19,8 @@ app.get('/batterStatsApi/:year/:statsType/:sort', apisController.getBatterStats)
 app.get('/pitcherStatsApi/:year/:statsType/:sort', apisController.getPitcherStats)
 app.get('/teamBatterStatsApi/:year/:statsType/:sort', apisController.getTeamBatterStats)
 app.get('/teamPitcherStatsApi/:year/:statsType/:sort', apisController.getTeamPitcherStats)
+
+app.post('/login', usersController.login)
+app.get('/me', usersController.me)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
