@@ -11,8 +11,7 @@ const usersController = {
 
     Users.findOne({
       where: {
-        username: decoded.username,
-        token
+        username: decoded.username
       }
     }).then((me) => {
       if(!me) {
@@ -48,10 +47,6 @@ const usersController = {
           return res.json(errorMessage2)
         }
         const newAuthToken = generateAuthToken(username)
-        user.update({
-          token: newAuthToken,
-        }).catch(err => console.log(err))
-
         const loginMessage = {
           ok: 1,
           token: newAuthToken
